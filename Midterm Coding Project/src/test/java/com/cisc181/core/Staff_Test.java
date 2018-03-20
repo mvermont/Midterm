@@ -41,8 +41,8 @@ public class Staff_Test {
 	@Test
 	public void test2()  {
 		try {
-			staff.add(new Staff("Matt", "David", "Vermont", new Date(), "1234 Street Rd", "(703)1233456", "matthew.vermont@udel.edu", 
-					"9am - 11am", 2, 55100.01, new Date(), eTitle.MR));
+			staff.add(new Staff("Matt", "David", "Vermont", new Date(1999, 23, 4), "1234 Street Rd", "(703)1233456", "matthew.vermont@udel.edu", 
+					"9am - 11am", 2, 55100.01, new Date(2016, 1, 1), eTitle.MR));
 		} catch (PersonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class Staff_Test {
 		}
 		try {
 			staff.add(new Staff("Matt", "David", "Vermont", new Date(2119, 30, 2), "1234 Street Rd", "(703)-123-3456", "matthew.vermont@udel.edu", 
-					"9am - 11am", 2, 55100.01, new Date(), eTitle.MR));
+					"9am - 11am", 2, 55100.01, new Date(2016, 1, 1), eTitle.MR));
 		} catch (PersonException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
