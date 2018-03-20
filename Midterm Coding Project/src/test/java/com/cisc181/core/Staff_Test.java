@@ -36,7 +36,6 @@ public class Staff_Test {
 			totalSalary += s.getSalary();			
 		}
 		assertEquals(55340.00,totalSalary/staff.size(), 0.01);
-		//test
 	}	
 	
 	

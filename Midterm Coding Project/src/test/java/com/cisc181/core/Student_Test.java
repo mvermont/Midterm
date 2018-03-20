@@ -43,28 +43,40 @@ public class Student_Test {
 	@Test
 	public void test() {
 		ArrayList<Enrollment> enrollments = new ArrayList<Enrollment>();
-		for(Student s: students) {
-			enrollments.add(new Enrollment(sections.get((int) (Math.random()*sections.size())).getSectionID(), s.getStudentID()));
-			enrollments.add(new Enrollment(sections.get((int) (Math.random()*sections.size())).getSectionID(), s.getStudentID()));
-			enrollments.add(new Enrollment(sections.get((int) (Math.random()*sections.size())).getSectionID(), s.getStudentID()));
+		for(Section s: sections) {
+			for(Student student: students) {
+				enrollments.add(new Enrollment(s.getSectionID(), student.getStudentID()));
+			}
 		}
-		for(int enrollment1 = 0; enrollment1 < enrollments.size(); enrollment1++) {
-			for(int enrollment2 = 0; enrollment2 < enrollments.size(); enrollment2++) {
-				if(enrollments.get(enrollment1).getSectionID() == enrollments.get(enrollment2).getSectionID() &&
-						enrollments.get(enrollment1).getStudentID() == enrollments.get(enrollment2).getStudentID()) {
-					while(enrollments.get(enrollment1).getSectionID() == enrollments.get(enrollment2).getSectionID() &&
-						enrollments.get(enrollment1).getStudentID() == enrollments.get(enrollment2).getStudentID()) {
-						enrollments.set(enrollment2,new Enrollment(sections.get((int) (Math.random()*sections.size())).getSectionID(),
-								enrollments.get(enrollment2).getStudentID()));
+		for(Enrollment e: enrollments) {
+			e.SetGrade(87);
+		}
+		
+		for(Student s: students) {
+			double grades = 0;
+			int count = 0;
+			for(Enrollment e: enrollments) {
+				if(s.getStudentID() == e.getStudentID()) {
+					grades += e.getGrade();
+					count++;
+				}
+			}
+			assertEquals(87, grades/count);
+		}
+		
+		
+		for(Course c: courses) {
+			double totalGrades = 0.0;
+			int count = 0;
+			for(Section s: sections) {
+				for(Enrollment e: enrollments) {
+					if(c.getCourseID() == s.getCourseID() && e.getSectionID() == s.getSectionID()) {
+						totalGrades += e.getGrade();
+						count++;
 					}
 				}
 			}
+			assertEquals(87,totalGrades/count);
 		}
-		System.out.println(enrollments.size());
-		for(Enrollment e: enrollments) {
-			System.out.println(e.getSectionID() + " " + e.getStudentID());
-		}
-
-		assertEquals(1, 1);
 	}
 }

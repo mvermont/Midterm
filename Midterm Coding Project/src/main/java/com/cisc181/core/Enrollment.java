@@ -9,7 +9,9 @@ public class Enrollment {
 	private double Grade;
 	
 	private Enrollment() {
-		
+		SectionID = UUID.randomUUID();
+		StudentID = UUID.randomUUID();
+		EnrollmentID = UUID.randomUUID();
 	}
 
 	public Enrollment(UUID sectionID, UUID studentID) {
@@ -18,7 +20,7 @@ public class Enrollment {
 		EnrollmentID = UUID.randomUUID();
 	}
 	
-	private void SetGrade(double grade) {
+	public void SetGrade(double grade) {
 		Grade = grade;
 	}
 

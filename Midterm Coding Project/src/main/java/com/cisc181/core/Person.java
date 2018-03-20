@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*
- * comment
- */
+
 public abstract class Person implements java.io.Serializable {
 
 	private Date DOB;
@@ -47,11 +45,12 @@ public abstract class Person implements java.io.Serializable {
 	}
 
 	public void setDOB(Date DOB) throws PersonException{
-		if(DOB.getYear() - this.DOB.getYear() > 100) {
+		if(DOB.getYear() > this.DOB.getYear() + 100) {
 			throw new PersonException("Date of Birth too large", this);
 		}
-		this.DOB = DOB;
-		
+		else {
+			this.DOB = DOB;
+		}	
 	}
 
 	public void setAddress(String newAddress) {
